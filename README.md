@@ -1,4 +1,4 @@
-## Парсер котировок Oil & Gas с сайта *http://www.msenergyservices.com*  @author Artem Faenko
+### Парсер котировок Oil & Gas с сайта *http://www.msenergyservices.com*  @author Artem Faenko
 
 Т.к. котировки подгружаются скриптами, то пришлось использовать консольный виртуальный браузер.
 Сначала для парсинга был применен - *PhantomJS*. Время загрузки данных составляло 5 секунд.
