@@ -27,11 +27,7 @@ ________________________________________________________________________________
 
 
 public String parsing() {
-
-        LogFactory.getFactory().setAttribute("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.NoOpLog");
-        java.util.logging.Logger.getLogger("com.gargoylesoftware").setLevel(Level.OFF);
-        java.util.logging.Logger.getLogger("org.apache.commons.httpclient").setLevel(Level.OFF);
-
+       
         HtmlUnitDriver driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_45, true);
         driver.get("http://www.msenergyservices.com");
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
