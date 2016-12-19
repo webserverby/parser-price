@@ -17,6 +17,56 @@
 С сервера получаем json ответ *{"US Rig Count:":"51.90","WTI Crude Oil":"51.90 +1.93%","Brent Crude Oil":"55.21 +2.16%","Natural Gas"
 :"3.41 -0.56%","P:":"936.442.2500","F:":"936.442.2599"}* 
 
+**java код парсера:** 
+_________________________________________________________________________________________________________________________________
+
+public String parsing() {
+
+        LogFactory.getFactory().setAttribute("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.NoOpLog");
+        java.util.logging.Logger.getLogger("com.gargoylesoftware").setLevel(Level.OFF);
+        java.util.logging.Logger.getLogger("org.apache.commons.httpclient").setLevel(Level.OFF);
+
+        HtmlUnitDriver driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_45, true);
+        driver.get("http://www.msenergyservices.com");
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+
+        String htmlContent = driver.getPageSource();
+        driver.close();
+
+        Document document = Jsoup.parse(htmlContent);
+        String elementRig =  document.select( "#newsticker-block > div > table > tbody > tr > td:nth-child(1)" ).text();
+        String[] arrRig = elementRig.trim().split("\\s+");
+
+        String elementOil =  document.select( "tr[valign=bottom]" ).text();
+        String[] arrOil = elementOil.trim().split("\\s+");
+
+
+        String elementPF = document.select(".custom.topcontact").text();
+        String[] arrPF = elementPF.trim().split("\\s+");
+
+        LinkedHashMap<String, String> data = new LinkedHashMap<String, String>();
+        data.put( arrRig[0] + " " + arrRig[1] + " " + arrRig[2], arrOil[3] );
+        data.put( arrOil[0] + " " + arrOil[1] + " " + arrOil[2], arrOil[3] + " " + arrOil[4] );
+        data.put( arrOil[5] + " " + arrOil[6] + " " + arrOil[7], arrOil[8] + " " + arrOil[9] );
+        data.put( arrOil[10] + " " + arrOil[11], arrOil[12] + " " + arrOil[13] );
+        data.put( arrPF[0], arrPF[1] );
+        data.put( arrPF[3], arrPF[4] );
+
+        ObjectMapper mapper = new ObjectMapper();
+        String   jsonFromMap = null;
+        try {
+            jsonFromMap = mapper.writeValueAsString(data);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        System.out.println(Arrays.toString(arrOil));
+        System.out.println(Arrays.toString(arrPF));
+        System.out.println(jsonFromMap);
+
+        return jsonFromMap;
+    }
+_________________________________________________________________________________________________________________________________
+
 **Скрипт:** 
 _________________________________________________________________________________________________________________________________
 $(document).ready(function () {
