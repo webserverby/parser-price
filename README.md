@@ -17,7 +17,7 @@
 С сервера получаем json ответ *{"US Rig Count:":"51.90","WTI Crude Oil":"51.90 +1.93%","Brent Crude Oil":"55.21 +2.16%","Natural Gas"
 :"3.41 -0.56%","P:":"936.442.2500","F:":"936.442.2599"}* 
 
-**java код парсера:** 
+**Java код парсера:** 
 _________________________________________________________________________________________________________________________________
 
 public String parsing() {
@@ -67,11 +67,9 @@ public String parsing() {
     }
 _________________________________________________________________________________________________________________________________
 
-**Скрипт:** 
+**JS cкрипт:** 
 _________________________________________________________________________________________________________________________________
-$(document).ready(function () {
-		$(".row").hide();
-	});
+
 
 	function replaceRed(str,index){
 		return str.substr(0,index)+str.substr(index).replace(/\-\w+\..+%/,'<strong class="red-cot">$&</strong>');
@@ -80,7 +78,6 @@ $(document).ready(function () {
 	function replaceGreen(str,index){
 		return str.substr(0,index)+str.substr(index).replace(/\+\w+\..+%/,'<strong class="green-cot">$&</strong>');
 	}
-
 
 	function get_parse() {
 
