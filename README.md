@@ -6,15 +6,13 @@
 Но из-за того, что к нему еще нужно было подключать библиотеку для определённой версии ОС, которая весит 18 Мб, то был применен более легковесный аналог - *HtmlUnitDriver*.
 Но скорость загрузки увеличилась до 15-20 секунд.
  
+**Скриншоты:** 
 
-### 1 Главная страница
-**1.1 Графики:** 
-- Заказов, Туристов, Выручки за неделю.
+![CC0](https://github.com/webserverby/parser-price/blob/master/screenshots/glav_1.png)
 
-**1.2 Вывод количества:** 
-- Заказов, Туров, Туристов.
-![CC0](https://github.com/webserverby/travel_spring_hibernate/blob/master/screenshots/ind_1.png)
+![CC0](https://github.com/webserverby/parser-price/blob/master/screenshots/glav_2.png)
 
-**1.3 Частичная локализация на английский страниц сайта. Смена локали нажатием на ссылку** 
+![CC0](https://github.com/webserverby/parser-price/blob/master/screenshots/glav_3.png)
 
-![CC0](https://github.com/webserverby/travel_spring_hibernate/blob/master/screenshots/lang_1.png)
+С сервера получаем json ответ *{"US Rig Count:":"51.90","WTI Crude Oil":"51.90 +1.93%","Brent Crude Oil":"55.21 +2.16%","Natural Gas"
+:"3.41 -0.56%","P:":"936.442.2500","F:":"936.442.2599"}* 
