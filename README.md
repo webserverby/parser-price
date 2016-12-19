@@ -25,6 +25,7 @@
 **Java код парсера:** 
 _________________________________________________________________________________________________________________________________
 
+
 public String parsing() {
 
         LogFactory.getFactory().setAttribute("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.NoOpLog");
@@ -38,7 +39,7 @@ public String parsing() {
         driver.close();
 
         Document document = Jsoup.parse(htmlContent);
-        String elementRig =  document.select( "#newsticker-block > div > table > tbody > tr > td:nth-child(1)" ).text();
+        String elementRig =  document.select("#newsticker-block > div > table > tbody > tr > td:nth-child(1)").text();
         String[] arrRig = elementRig.trim().split("\\s+");
 
         String elementOil =  document.select( "tr[valign=bottom]" ).text();
@@ -61,7 +62,7 @@ public String parsing() {
             jsonFromMap = mapper.writeValueAsString(data);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
-        }      
+        }     
 
         return jsonFromMap;
     }
