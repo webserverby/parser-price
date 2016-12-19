@@ -34,7 +34,6 @@ public String parsing() {
         HtmlUnitDriver driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_45, true);
         driver.get("http://www.msenergyservices.com");
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-
         String htmlContent = driver.getPageSource();
         driver.close();
 
@@ -62,10 +61,7 @@ public String parsing() {
             jsonFromMap = mapper.writeValueAsString(data);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
-        }
-        System.out.println(Arrays.toString(arrOil));
-        System.out.println(Arrays.toString(arrPF));
-        System.out.println(jsonFromMap);
+        }      
 
         return jsonFromMap;
     }
@@ -84,7 +80,6 @@ ________________________________________________________________________________
 	}
 
 	function get_parse() {
-
 		$.getJSON('/parser', function(data) {
 			$.each(data, function(key, val) {
 				if( val.indexOf('+') > 0 ){
@@ -123,6 +118,5 @@ ________________________________________________________________________________
 			"text" : false,
 			"title" : "Пожалуйста подождите..."
 		});
-
 	}
 _________________________________________________________________________________________________________________________________
