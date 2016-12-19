@@ -1,4 +1,4 @@
-### Парсер котировок Oil & Gas с сайта *http://www.msenergyservices.com*  @author Artem Faenko
+### Парсер котировок Oil & Gas с сайта http://www.msenergyservices.com  @author Artem Faenko
 
 **Применил:** 
 - Back-end - Spring MVC
