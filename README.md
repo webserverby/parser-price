@@ -3,7 +3,7 @@
 **Применил:** 
 - Back-end - Spring MVC
 - Front-end - JS, jQuery(ajax), JSP, CSS, сборщик Gradle
-- Library - Selenium(HtmlUnitDriver, PhantomJS), Jackson(json)
+- Library - Selenium(HtmlUnitDriver, PhantomJS), Jsoup, Jackson(json)
 
 Т.к. котировки подгружаются скриптами, то пришлось использовать консольный виртуальный браузер.
 Сначала для парсинга был применен - *PhantomJS*. Время загрузки данных составляло 5 секунд.
