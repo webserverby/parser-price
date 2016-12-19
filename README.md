@@ -16,3 +16,61 @@
 
 С сервера получаем json ответ *{"US Rig Count:":"51.90","WTI Crude Oil":"51.90 +1.93%","Brent Crude Oil":"55.21 +2.16%","Natural Gas"
 :"3.41 -0.56%","P:":"936.442.2500","F:":"936.442.2599"}* 
+
+**Скрипт:** 
+*$(document).ready(function () {
+		$(".row").hide();
+	});
+
+	function replaceRed(str,index){
+		return str.substr(0,index)+str.substr(index).replace(/\-\w+\..+%/,'<strong class="red-cot">$&</strong>');
+	}
+
+	function replaceGreen(str,index){
+		return str.substr(0,index)+str.substr(index).replace(/\+\w+\..+%/,'<strong class="green-cot">$&</strong>');
+	}
+
+
+	function get_parse() {
+
+		$.getJSON('/parser', function(data) {
+			$.each(data, function(key, val) {
+				if( val.indexOf('+') > 0 ){
+					$('.row').append(
+						'<div class="col-xs pull-left block">' +
+						'<div class="col-xs pull-left white-cot">' + key + '</div>' +
+						'<div class="col-xs pull-left">&nbsp;' + replaceGreen(val, 5) + '</div>' +
+						'</div>'
+					);
+				} else if( val.indexOf('-') > 0){
+					$('.row').append(
+						'<div class="col-xs pull-left block">' +
+						'<div class="col-xs pull-left white-cot">' + key + '</div>' +
+						'<div class="col-xs pull-left">&nbsp;' + replaceRed(val, 5) + '</div>' +
+						'</div>'
+					);
+
+				} else {
+					$('.row').append(
+						'<div class="col-xs pull-left block">' +
+						'<div class="col-xs pull-left white-cot">' + key + '</div>' +
+						'<div class="col-xs pull-left">&nbsp;' + val + '</div>' +
+						'</div>'
+					);
+				}
+
+			});
+			$(".row").show();
+			$("body").faLoading(false);
+		});
+
+		$("body").faLoading({
+			"type" : "add",
+			"icon" : "fa-refresh",
+			"status" : 'loading',
+			"text" : false,
+			"title" : "Пожалуйста подождите..."
+		});
+
+	}
+*
