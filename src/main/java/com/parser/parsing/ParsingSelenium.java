@@ -35,7 +35,6 @@ public class ParsingSelenium {
         String elementOil =  document.select( "tr[valign=bottom]" ).text();
         String[] arrOil = elementOil.trim().split("\\s+");
 
-
         String elementPF = document.select(".custom.topcontact").text();
         String[] arrPF = elementPF.trim().split("\\s+");
 
