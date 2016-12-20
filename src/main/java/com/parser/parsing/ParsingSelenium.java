@@ -2,7 +2,6 @@ package com.parser.parsing;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.logging.LogFactory;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
@@ -10,16 +9,15 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
 
 public class ParsingSelenium {
 
     public String parsing() {
-
+/*
         LogFactory.getFactory().setAttribute("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.NoOpLog");
         java.util.logging.Logger.getLogger("com.gargoylesoftware").setLevel(Level.OFF);
         java.util.logging.Logger.getLogger("org.apache.commons.httpclient").setLevel(Level.OFF);
-
+*/
         HtmlUnitDriver driver = new HtmlUnitDriver(true);
         driver.get("http://www.msenergyservices.com");
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
